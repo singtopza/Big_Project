@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Sarabun&display=swap');
+body{
+    font-family: 'Sarabun', sans-serif;
+}
+a.nav-home{
+    color:rgb(255, 255, 255);
+    text-decoration: none;
+}
+a.nav-home:hover{
+    color:rgb(73, 73, 73);
+    text-decoration: none;
+}
+.navbar-light .navbar-nav .nav-link {
+    color:rgb(255, 255, 255);
+    text-decoration: none;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+    color:rgb(73, 73, 73);
+    text-decoration: none;
+}
+.bg-navbar{
+    background-color: rgb(102, 102, 102);
+}
