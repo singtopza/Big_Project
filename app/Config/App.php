@@ -24,6 +24,7 @@ class App extends BaseConfig
      * @var string
      */
     public $baseURL = 'http://localhost:5000/';
+    // public $baseURL = 'http://154.202.2.252:5000/';
     // public $baseURL = 'http://localhost/Big_Project_Code4/public/';
     
 
@@ -38,7 +39,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $indexPage = 'index.php';
+    public $indexPage = '';
 
     /**
      * --------------------------------------------------------------------------

@@ -1,49 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-  <!-- CSS only -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/navbar.css'); ?>">
-  <!-- <style>
-  body{
-    background-image: url("https://www.img.in.th/images/e2e5e94872a46f17a9c89df7fbe6e6e2.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-  }
-</style> -->
+  <title>I-Van</title>
+	<?php require('heads/head.php'); ?>
 </head>
 <body>
 <?php require('components/navbar.php'); ?>
 <div class="container mt-4">
-            <div class="row justify-content-md-center">
-                <div class="col-md-6">
-                    <h1>ลงชื่อเข้าใช้</h1>
-                    <hr>
+  <div class="row">
+  <div class="col-md-2"></div>
+            <div class="col-md-8 justify-content-md-center px-4">
+                <div class=" tabcard_des">
+                    <h1 class="logreg-txt text-center py-5">เข้าสู่ระบบ</h1>
                     <?php if(session()->getFlashdata('msg')): ?>
-                        <div class="alert alert-danger"><?= session()->getFlashdata('msg'); ?></div>
+                      <div class="alert alert-danger"><?= session()->getFlashdata('msg'); ?></div>
                     <?php endif; ?>
                     <form action="/login/auth" method="post">
-                    <div class="mb-3">
-                        <label for="inputemail" class="form-label">อีเมล</label>
-                        <input type="email" name="email" class="form-control" id="inputforemail" value="<?= set_value('email'); ?>" placeholder="ระบุที่อยู่อีเมล">
+                    <div class="form-group row mb-4">
+                    <label for="staticEmail" class="col-md-3 col-sm-4 col-form-label logreg-label-txt">อีเมล</label>
+                    <div class="col-md-9 col-sm-8">
+                    <input type="email" name="email" class="form-control" id="inputforemail" value="<?= set_value('email'); ?>">
                     </div>
-                    <div class="mb-3">
-                        <label for="inputpassword" class="form-label">รหัสผ่าน</label>
-                        <input type="password" name="password" class="form-control" id="inputforpassword" placeholder="ระบุรหัสผ่าน">
-                    </div>
-                    <center><br><button type="submit" class="btn btn-success" style="width:100px;">ยืนยัน</button>
-                    <a href="/Home" class="btn btn-danger me-1" style="width:100px;">ยกเลิก</a>
+                  </div>
+                  <div class="form-group row mb-2">
+                  <label for="inputPassword" class="col-md-3 col-sm-4 col-form-label logreg-label-txt">รหัสผ่าน</label>
+                  <div class="col-md-9 col-sm-8">
+                  <input type="password" name="password" class="form-control mb-3" id="inputforpassword">
+                  <input type="checkbox" name="rememberme" id="cb-rememberme" class="cb-rememberme">
+                  <label for="cb-rememberme" class="cb-rememberme-txt mb-4">จดจำฉัน</label><br/>
+                  <label for="cb-rememberme" class="unaccount-txt">ยังไม่มีบัญชี <a href="" class="unaccount-link">คลิกที่นี่</a></label>
+                  </div>
+                </div>
+                    <center>
+                      <div class="mt-5"><a href="" class="forgot-pwd-txt">ลืมรหัสผ่าน?</a></div>
+                      <button type="submit" class="btn btn-logreg-confirm mt-3 mb-5">เข้าสู่ระบบ</button>
+                    </center>
                 </form>
                 </div>
+              </div>
+              <div class="col-md-2"></div>
             </div>
         </div>
+<?php require('components/footer.php'); ?>
 </body>
 </html>
