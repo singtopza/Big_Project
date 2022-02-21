@@ -25,7 +25,8 @@ class App extends BaseConfig
      */
     public $baseURL = 'http://localhost:5000/';
     // public $baseURL = 'http://154.202.2.252:5000/';
-    // public $baseURL = 'http://localhost/Big_Project_Code4/public/';
+    // public $baseURL = 'http://www.kunkaibookshop.lnw.mn/';
+    // public $baseURL = 'http://localhost/Big_Project_Code4/public_html/';
     
 
     /**

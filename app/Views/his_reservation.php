@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <title>I-Van</title>
-	<?php require('heads/head.php'); ?>
+	<?php require('components/header.php'); ?>
 </head>
 <body>
 <?php require('components/navbar.php'); ?>
@@ -13,52 +13,52 @@
       <div class="tabcard_des px-4">
         <h2 class="text-center my-5">ประวัติการจองรถตู้</h2>
         <center>
-          <table>
+          <table class="his-res-table">
             <tr>
-              <th>ลำดับ</th>
-              <th>วันที่จอง</th>
-              <th>จำนวนที่นั่ง</th>
-              <th>รหัสตั๋ว</th>
+              <th class="his-res-th">ลำดับ</th>
+              <th class="his-res-th">วันที่จอง</th>
+              <th class="his-res-th">จำนวนที่นั่ง</th>
+              <th class="his-res-th">รหัสตั๋ว</th>
             </tr>
             <tr>
-              <td>
+              <td class="his-res-td">
                 <label class="form-check-label" for="list_b1">1</label>
               </td>
-              <td>
+              <td class="his-res-td">
                 <label class="form-check-label" for="list_b1">20/01/2564<label>
               </td>
-              <td>
+              <td class="his-res-td">
                 <label class="form-check-label" for="list_b1">ทำการจองที่นั่ง จำนวน 2 ที่นั่งสำเร็จ<label>
               </td>
-              <td>
+              <td class="his-res-td">
                 <label class="form-check-label" for="list_b1">001<label>
               </td>
             </tr>
             <tr>
-              <td>
+              <td class="his-res-td">
                 <label class="form-check-label" for="list_b1">2</label>
               </td>
-              <td>
+              <td class="his-res-td">
                 <label class="form-check-label" for="list_b1">20/01/2564<label>
               </td>
-              <td>
+              <td class="his-res-td">
                 <label class="form-check-label" for="list_b1">ทำการจองที่นั่ง จำนวน 2 ที่นั่งสำเร็จ<label>
               </td>
-              <td>
+              <td class="his-res-td">
                 <label class="form-check-label" for="list_b1">002<label>
               </td>
             </tr>
             <tr>
-              <td>
+              <td class="his-res-td">
                 <label class="form-check-label" for="list_b1">3</label>
               </td>
-              <td>
+              <td class="his-res-td">
                 <label class="form-check-label" for="list_b1">20/01/2564<label>
               </td>
-              <td>
+              <td class="his-res-td">
                 <label class="form-check-label" for="list_b1">ทำการจองที่นั่ง จำนวน 2 ที่นั่งสำเร็จ<label>
               </td>
-              <td>
+              <td class="his-res-td">
                 <label class="form-check-label" for="list_b1">003<label>
               </td>
             </tr>

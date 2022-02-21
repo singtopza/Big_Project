@@ -17,20 +17,19 @@
           <a class="nav-link nav_link_text" href="<?php echo base_url('/table_reservation'); ?>">ตารางเวลารถ</a>
 				</li>
         <?php
-          $checkname = $session->get('ses_cus_id'); 
-          $ses_F_Name = $session->get('ses_first_name');
-          $ses_L_Name = $session->get('ses_last_name');
-          if(isset($checkname)) {
+          $ses_userid = $session->get('ses_id');
+          $ses_Pos_ID = $session->get('ses_pos_id');
+          if(isset($ses_userid)) {
         ?>	
           <li class="nav-item">
             <a class="nav-link nav_link_text" href="<?php echo base_url('/his_reservation'); ?>">ประวัติการจอง</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav_link_text" href="<?php echo base_url('/Home'); ?>">ตรวจสอบสถานะการจอง</a>
+            <a class="nav-link nav_link_text" href="<?php echo base_url('/check_reservation'); ?>">ตรวจสอบสถานะการจอง</a>
           </li>
-        <?php } else {} ?>
+        <?php } ?>
       </ul>
-      <?php if(isset($checkname)) { ?>
+      <?php if(isset($ses_userid)) { ?>
       <div>
         <center>
           <a href="<?php echo base_url('/profile'); ?>">
@@ -40,15 +39,37 @@
       </div>
       <div class="dropdown dropdown-user">
         <center>
-          <a href="/profile" class="nav-link dropdown-toggle" role="button" id="id-btn-uname" data-bs-toggle="dropdown" aria-expanded="false"> <?php echo $ses_F_Name." ".$ses_L_Name; ?>
+          <a href="/profile" class="nav-link dropdown-toggle" role="button" id="id-btn-uname" data-bs-toggle="dropdown" aria-expanded="false"> <?php echo $Q_F_Name." ".$Q_L_Name; ?>
           </a>
         </center>
       <div class="navbar-nav">
         <center>
           <ul class="dropdown-menu-ul dropdown-menu pe-3" aria-labelledby="id-btn-uname" style="text-align:right;">
             <li>
-              <a href="<?php echo base_url('/myorder'); ?>" class="usrlist"><font color="#000000">โปรไฟล์</font></a>
+              <a href="<?php echo base_url('/profile'); ?>" class="usrlist"><font color="#000000">โปรไฟล์</font></a>
             </li>
+            <li>
+              <a href="<?php echo base_url('/myorder'); ?>" class="usrlist"><font color="#000000">การจองของฉัน</font></a>
+            </li>
+            <?php if(isset($ses_Pos_ID) && $ses_Pos_ID <= 1) { ?>
+              <!-- Admin -->
+              <li>
+                <a href="<?php echo base_url('/usermanager'); ?>" class="usrlist"><font color="#000000">จัดการผู้ใช้</font></a>
+              </li>
+            <?php } if (isset($ses_Pos_ID) && $ses_Pos_ID <= 2) { ?>
+              <!-- Officer -->
+              <li>
+                <a href="<?php echo base_url('/officermanager'); ?>" class="usrlist"><font color="#000000">จัดการการจอง</font></a>
+              </li>
+            <?php } if (isset($ses_Pos_ID) && $ses_Pos_ID <= 3) { ?>
+              <!-- Driver -->
+              <li>
+                <a href="<?php echo base_url('/drivermanager'); ?>" class="usrlist"><font color="#000000">พนักงานขับรถ</font></a>
+              </li>
+              <li>
+                <a href="<?php echo base_url('/Home'); ?>" class="usrlist"><font color="#000000">กลับสู่เมนูหลัก</font></a>
+              </li>
+            <?php } ?>
             <li>
               <a href="<?php echo base_url('/login/logout'); ?>" class="usrlist"><font color="red">ออกจากระบบ</font></a>
             </li>
@@ -56,10 +77,19 @@
         </center>
       </div>
     </div>
-      <a href="<?php echo base_url('/profile'); ?>" class="nav-link px-0 py-0">
-        <img src="<?php echo base_url('images/no-picture.png') ?>" class="img-profile">
-      </a>
-      <?php } else { ?>
+    <?php 
+      if (isset($Q_Picture) && !empty($Q_Picture)) { ?>
+        <a href="<?php echo base_url('/profile'); ?>" class="nav-link px-0 py-0">
+          <img src="<?php echo base_url('360/uploads/userProfile/'.$Q_Picture); ?>" class="img-profile" width="100px" height="100px" alt="<?php echo $Q_Picture; ?>">
+        </a>
+    <?php 
+      } else { ?>
+        <a href="<?php echo base_url('/profile'); ?>" class="nav-link px-0 py-0">
+          <img src="<?php echo base_url('images/no-picture.png') ?>" class="img-profile" width="100px" height="100px" alt="N/A">
+        </a>
+    <?php }
+    } else { 
+      ?>
       <center>
 				<a href="<?php echo base_url('/login'); ?>" class="nav-link button-login" role="button">เข้าสู่ระบบ</a>
         <a href="<?php echo base_url('/register'); ?>" class="nav-link button-regis" role="button" href="#">สมัครสมาชิก</a>

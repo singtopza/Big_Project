@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <title>I-Van</title>
-	<?php require('heads/head.php'); ?>
+	<?php require('components/header.php'); ?>
 </head>
 <body>
 <?php require('components/navbar.php'); ?>

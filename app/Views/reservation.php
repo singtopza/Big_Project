@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
 	<title>I-Van</title>
-	<?php require('heads/head.php'); ?>
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/champ.css'); ?>">
+	<?php require('components/header.php'); ?>
 </head>
 <body>
 <?php require('components/navbar.php'); ?>
@@ -61,11 +60,11 @@
 <div class="mul-col">
 <div class="fluid1">
 
-	<div class="crad1">
+<div class="crad1">
 		<div class="row">	
-					<h6 class="card-title1">รายละเอียดเส้นทาง</h6>
+					<h6 class="card-title1 text-left">รายละเอียดเส้นทาง</h6>
 					<div class="col-4"> 
-						<p class="pt-4 arrow-center text-center">เส้นทาง :</p>
+						<p class="pt-4 arrow-center text-right">เส้นทาง :</p>
 					</div>
 					<div class="col-4">
 						<p class="pt-4 arrow-center text-left">นครปฐม(มาลัยแมน)</p>
@@ -73,7 +72,7 @@
 					<div class="col-1">
 						<p class="pt-4 arrow-center text-left">-</p>
 					</div>
-					<div class="col-1">
+					<div class="col-3">
 						<p class="pt-4 arrow-center text-left">กาญจนบุรี(บขส.)</p>
 					</div>
 
@@ -123,7 +122,7 @@
 	</div>
 </div>
 <div class="fluid2">
-	<div class="crad2">
+	<center><div class="crad2">
 		<div class="row">	
 			<h6 class="card-title1">เลือกจำนวนที่นั่ง</h6>
 			<div class="col-5"> 
@@ -174,7 +173,7 @@
 		</form>
 		</div>
 	</div>
-
+	</center>
 	
 </div>
 </div>
