@@ -20,48 +20,22 @@
               <th class="his-res-th">จำนวนที่นั่ง</th>
               <th class="his-res-th">รหัสตั๋ว</th>
             </tr>
+            <?php foreach ($history as $history_){?>
             <tr>
               <td class="his-res-td">
                 <label class="form-check-label" for="list_b1">1</label>
               </td>
               <td class="his-res-td">
-                <label class="form-check-label" for="list_b1">20/01/2564<label>
+                <label class="form-check-label" for="list_b1"><?php echo $history_['Go_Date']; ?><label>
               </td>
               <td class="his-res-td">
-                <label class="form-check-label" for="list_b1">ทำการจองที่นั่ง จำนวน 2 ที่นั่งสำเร็จ<label>
+                <label class="form-check-label" for="list_b1">ทำการจองที่นั่ง จำนวน <?php echo $history_['Re_Seate']; ?> ที่นั่งสำเร็จ<label>
               </td>
               <td class="his-res-td">
-                <label class="form-check-label" for="list_b1">001<label>
+                <label class="form-check-label" for="list_b1"><?php echo $history_['Tick_Code']; ?><label>
               </td>
             </tr>
-            <tr>
-              <td class="his-res-td">
-                <label class="form-check-label" for="list_b1">2</label>
-              </td>
-              <td class="his-res-td">
-                <label class="form-check-label" for="list_b1">20/01/2564<label>
-              </td>
-              <td class="his-res-td">
-                <label class="form-check-label" for="list_b1">ทำการจองที่นั่ง จำนวน 2 ที่นั่งสำเร็จ<label>
-              </td>
-              <td class="his-res-td">
-                <label class="form-check-label" for="list_b1">002<label>
-              </td>
-            </tr>
-            <tr>
-              <td class="his-res-td">
-                <label class="form-check-label" for="list_b1">3</label>
-              </td>
-              <td class="his-res-td">
-                <label class="form-check-label" for="list_b1">20/01/2564<label>
-              </td>
-              <td class="his-res-td">
-                <label class="form-check-label" for="list_b1">ทำการจองที่นั่ง จำนวน 2 ที่นั่งสำเร็จ<label>
-              </td>
-              <td class="his-res-td">
-                <label class="form-check-label" for="list_b1">003<label>
-              </td>
-            </tr>
+            <?php } ?>
           </table>
         </center>
       </div>
@@ -72,3 +46,15 @@
 <?php require('components/footer.php'); ?>
 </body>
 </html>
+<script>
+$(document).ready(function () {
+  <?php if(session()->getFlashdata('swel_title')) { ?>
+    swal({
+      title: "<?= session()->getFlashdata('swel_title') ?>",
+      text: "<?= session()->getFlashdata('swel_text') ?>",
+      icon: "<?= session()->getFlashdata('swel_icon') ?>",
+      button: "<?= session()->getFlashdata('swel_button') ?>",
+    });
+  <?php } ?>
+});
+</script>

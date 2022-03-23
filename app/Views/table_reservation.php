@@ -9,352 +9,113 @@
 <div class="container">
 <h2 class="text-center my-5">ดูตารางเวลารถ</h2>
 <div class="row">
-<p>เส้นทาง : นครปฐม(มาลัยแมน) -> กาญจนบุรี(บขส.)</p>
-<div class="col-6 pe-5"> 
-        <table class="tb-res-table">
-          <tr>
+<p class="mb-0">เส้นทาง : นครปฐม(มาลัยแมน) -> กาญจนบุรี(บขส.)</p>
+<div class="col-lg-6 col-12 px-3 mt-3">
+        <table class="tb-res-table fs17">
+          <tr class="tr-color-tbre">
             <th class="tb-res-th"></th>
             <th class="tb-res-th">หมายเลขรถ</th>
             <th class="tb-res-th">รอบเวลารถ</th>
           </tr>
+          <?php foreach ($dockcars_kanjanaburi as $dockcar_k) { ?>
           <tr>
 							<td class="tb-res-td">
-							<div class="form-check tb_rs_fix_radio">
-								<input type="radio" id="list_a1" name="carlist_a" value="1">
+							<div class="form-check tb_rs_fix_radio mb-0">
+								<input type="radio" id="list_a<?php echo $dockcar_k['Dock_car_id']; ?>" name="carlist_a" value="<?php echo $dockcar_k['Dock_car_id']; ?>">
 							</td>
 							<td class="tb-res-td">
-								<label class="form-check-label" for="list_a1">ม.2(จ)/81-98</label>
+								<label class="form-check-label" for="list_a<?php echo $dockcar_k['Dock_car_id']; ?>"><?php echo $dockcar_k['Van_Num']; ?></label>
 							</td>
 							<td class="tb-res-td">
-								<label class="form-check-label" for="list_a1">07.00 น.<label>
-							</div>
+								<label class="form-check-label" for="list_a<?php echo $dockcar_k['Dock_car_id']; ?>">
+                  <?php 
+                    $timeformat = date_create($dockcar_k['Van_Out']);
+                    echo date_format($timeformat, "H.i"." น.");
+                  ?>
+                </label>
 							</td>
+            </div>
           </tr>
-          <tr>
-							<td class="tb-res-td">
-							<div class="form-check tb_rs_fix_radio">
-								<input type="radio" id="list_a2" name="carlist_a" value="2">
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_a2">ม.1(ด)/77-56</label>
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_a2">09.00 น.<label>
-							</div>
-							</td>
-          </tr>
-          <tr>
-							<td class="tb-res-td">
-							<div class="form-check tb_rs_fix_radio">
-								<input type="radio" id="list_a3" name="carlist_a" value="3">
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_a3">ม.2(จ)/81-98</label>
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_a3">11.00 น.<label>
-							</div>
-							</td>
-          </tr>
-          <tr>
-							<td class="tb-res-td">
-							<div class="form-check tb_rs_fix_radio">
-								<input type="radio" id="list_a4" name="carlist_a" value="4">
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_a4">ม.4(พ)/82-98</label>
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_a4">13.00 น.<label>
-							</div>
-							</td>
-          </tr>
-          <tr>
-							<td class="tb-res-td">
-							<div class="form-check tb_rs_fix_radio">
-								<input type="radio" id="list_a5" name="carlist_a" value="5">
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_a5">ม.1(ด)/77-56</label>
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_a5">15.00 น.<label>
-							</div>
-							</td>
-          </tr>
-          <tr>
-							<td class="tb-res-td">
-							<div class="form-check tb_rs_fix_radio">
-								<input type="radio" id="list_a6" name="carlist_a" value="6">
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_a6">ม.4(พ)/82-98</label>
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_a6">17.00 น.<label>
-							</div>
-							</td>
-          </tr>
-          <tr>
-							<td class="tb-res-td">
-							<div class="form-check tb_rs_fix_radio">
-								<input type="radio" id="list_a7" name="carlist_a" value="7">
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_a7">ม.2(จ)/81-98</label>
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_a7">18.00 น.<label>
-							</div>
-							</td>
-          </tr>
+          <?php } ?>
         </table>
 </div>
-<div class="col-6 ps-5"> 
-<table class="tb-res-table">
-          <tr>
+<div class="col-lg-6 col-12 px-3 mt-3"> 
+<table class="tb-res-table fs17">
+          <tr class="tr-color-tbre">
             <th class="tb-res-th">ปลายทาง</th>
             <th class="tb-res-th">ราคา(บาท)</th>
-           
           </tr>
+          <?php foreach ($ticketprice_ntok as $price_ntok) { ?>
           <tr>
 							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b1">บ้านโป่ง</label>
+								<label class="form-check-label" for="list_b1"><?php echo $price_ntok['Station_Name']; ?></label>
 							</td>
 							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b1">40<label>
-							</div>
+								<label class="form-check-label" for="list_b1"><?php echo $price_ntok['Tic_Price']; ?><label>
 							</td>
           </tr>
-          <tr>
-							
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b2">ลูกแก</label>
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b2">45<label>
-							</div>
-							</td>
-          </tr>
-          <tr>
-							
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b3">ท่าเรือ</label>
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b3">50<label>
-							</div>
-							</td>
-          </tr>
-          <tr>
-							
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b4">ท่ามะกา</label>
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b4">55<label>
-							</div>
-							</td>
-          </tr>
-          <tr>
-						
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b5">ท่าม่วง</label>
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b5">60<label>
-							</div>
-							</td>
-          </tr>
-          <tr>
-						
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b6">กาญจนบุรี(บขส.)</label>
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b6">70<label>
-							</div>
-							</td>
-          </tr>
+          <?php } ?>
         </table>
 </div>
 </div>
 <br> <br>
 <p>เส้นทาง กาญจนบุรี(บขส.) -> นครปฐม(มาลัยแมน)</p>
 <div class="row">
-<div class="col-6 pe-5"> 
-        <center><table class="tb-res-table">
-          <tr>
+<div class="col-lg-6 col-12 px-3 mt-3"> 
+          <table class="tb-res-table fs17">
+          <tr class="tr-color-tbre">
             <th class="tb-res-th"></th>
             <th class="tb-res-th">หมายเลขรถ</th>
             <th class="tb-res-th">รอบเวลารถ</th>
           </tr>
+          <?php foreach ($dockcars_nakhonpathom as $dockcar_n) { ?>
           <tr>
 							<td class="tb-res-td">
-							<div class="form-check tb_rs_fix_radio">
-								<input type="radio" id="list_b1" name="carlist_b" value="1">
+							<div class="form-check tb_rs_fix_radio mb-0">
+								<input type="radio" id="list_b<?php echo $dockcar_n['Dock_car_id']; ?>" name="carlist_a" value="<?php echo $dockcar_n['Dock_car_id']; ?>">
+              </div>
 							</td>
 							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b1">ม.2(จ)/81-98</label>
+								<label class="form-check-label" for="list_b<?php echo $dockcar_n['Dock_car_id']; ?>"><?php echo $dockcar_n['Van_Num']; ?></label>
 							</td>
 							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b1">06.00 น.<label>
-							</div>
+								<label class="form-check-label" for="list_b<?php echo $dockcar_n['Dock_car_id']; ?>">
+                  <?php 
+                    $timeformat = date_create($dockcar_n['Van_Out']);
+                    echo date_format($timeformat, "H.i"." น.");
+                  ?>
+                </label>
 							</td>
           </tr>
-          <tr>
-							<td class="tb-res-td">
-							<div class="form-check tb_rs_fix_radio">
-								<input type="radio" id="list_b2" name="carlist_b" value="2">
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b2">ม.1(ด)/77-56</label>
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b2">08.00 น.<label>
-							</div>
-							</td>
-          </tr>
-          <tr>
-							<td class="tb-res-td">
-							<div class="form-check tb_rs_fix_radio">
-								<input type="radio" id="list_b3" name="carlist_b" value="3">
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b3">ม.2(จ)/81-98</label>
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b3">10.00 น.<label>
-							</div>
-							</td>
-          </tr>
-          <tr>
-							<td class="tb-res-td">
-							<div class="form-check tb_rs_fix_radio">
-								<input type="radio" id="list_b4" name="carlist_b" value="4">
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b4">ม.4(พ)/82-98</label>
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b4">12.00 น.<label>
-							</div>
-							</td>
-          </tr>
-          <tr>
-							<td class="tb-res-td">
-							<div class="form-check tb_rs_fix_radio">
-								<input type="radio" id="list_b5" name="carlist_b" value="5">
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b5">ม.1(ด)/77-56</label>
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b5">14.00 น.<label>
-							</div>
-							</td>
-          </tr>
-          <tr>
-							<td class="tb-res-td">
-							<div class="form-check tb_rs_fix_radio">
-								<input type="radio" id="list_b6" name="carlist_b" value="6">
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b6">ม.4(พ)/82-98</label>
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b6">16.00 น.<label>
-							</div>
-							</td>
-          </tr>
-          <tr>
-							<td class="tb-res-td">
-							<div class="form-check tb_rs_fix_radio">
-								<input type="radio" id="list_b7" name="carlist_b" value="7">
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b7">ม.2(จ)/81-98</label>
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b7">18.00 น.<label>
-							</div>
-							</td>
-          </tr>
-        </table></center>
+          <?php } ?>
+        </table>
 </div>
-<div class="col-6 ps-5"> 
-<table class="tb-res-table">
-          <tr>
+<div class="col-lg-6 col-12 px-3 mt-3"> 
+<table class="tb-res-table fs17">
+          <tr class="tr-color-tbre">
             <th class="tb-res-th">ปลายทาง</th>
             <th class="tb-res-th">ราคา(บาท)</th>
           </tr>
+          <?php foreach ($ticketprice_kton as $price_kton) { ?>
           <tr>
 							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b1">บ้านโป่ง</label>
+								<label class="form-check-label" for="list_b1"><?php echo $price_kton['Station_Name']; ?></label>
 							</td>
 							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b1">60<label>
+								<label class="form-check-label" for="list_b1"><?php echo $price_kton['Tic_Price']; ?></label>
 							</div>
 							</td>
           </tr>
-          <tr>
-							
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b2">ลูกแก</label>
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b2">55<label>
-							</div>
-							</td>
-          </tr>
-          <tr>
-							
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b3">ท่าเรือ</label>
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b3">50<label>
-							</div>
-							</td>
-          </tr>
-          <tr>
-							
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b4">ท่ามะกา</label>
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b4">45<label>
-							</div>
-							</td>
-          </tr>
-          <tr>
-						
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b5">ท่าม่วง</label>
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b5">40<label>
-							</div>
-							</td>
-          </tr>
-          <tr>
-						
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b6">นครปฐม(มาลัยแมน)</label>
-							</td>
-							<td class="tb-res-td">
-								<label class="form-check-label" for="list_b6">70<label>
-							</div>
-							</td>
-          </tr>
+          <?php } ?>
         </table>
 </div>
 </div>
 <br><br>
 <center>
-<div class="btn-group" role="group" aria-label="Basic example">
-          <a href="<?php echo base_url('/reservation') ?>" class="button btn-tb-reser-1 mb-5">จองตั๋วที่นี่</a>
-        </div></center>
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <a href="<?php echo base_url('/reservation') ?>" class="button btn-logreg-confirm mb-5">จองตั๋วที่นี่</a>
+  </div>
+</center>
 </div>
 <?php require('components/footer.php'); ?>
 </body>

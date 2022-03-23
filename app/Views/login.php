@@ -1,3 +1,4 @@
+<?php $session = session(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,20 +16,20 @@
                     <?php if(session()->getFlashdata('msg')): ?>
                       <div class="alert alert-danger"><?= session()->getFlashdata('msg'); ?></div>
                     <?php endif; ?>
-                    <form action="/login/auth" method="post">
+                    <form action="/UserController/auth" method="post">
                     <div class="form-group row mb-4">
                     <label for="staticEmail" class="col-md-3 col-sm-4 col-form-label logreg-label-txt">อีเมล</label>
                     <div class="col-md-9 col-sm-8">
-                    <input type="email" name="email" class="form-control" id="inputforemail" value="<?= set_value('email'); ?>">
+                    <input type="email" name="email" class="form-control" id="inputforemail" value="<?php if(isset($_COOKIE['email'])) { echo $_COOKIE['email']; }; ?>">
                     </div>
                   </div>
                   <div class="form-group row mb-2">
                   <label for="inputPassword" class="col-md-3 col-sm-4 col-form-label logreg-label-txt">รหัสผ่าน</label>
                   <div class="col-md-9 col-sm-8">
-                  <input type="password" name="password" class="form-control mb-3" id="inputforpassword">
-                  <input type="checkbox" name="rememberme" id="cb-rememberme" class="cb-rememberme">
+                  <input type="password" name="password" class="form-control mb-3" id="inputforpassword" value="<?php if(isset($_COOKIE["password"])) { echo $_COOKIE["password"]; } ?>">
+                  <input type="checkbox" name="rememberme" id="cb-rememberme" class="cb-rememberme" <?php if(isset($_COOKIE["email"])) { ?> checked <?php } ?>>
                   <label for="cb-rememberme" class="cb-rememberme-txt mb-4">จดจำฉัน</label><br/>
-                  <label for="cb-rememberme" class="unaccount-txt">ยังไม่มีบัญชี <a href="" class="unaccount-link">คลิกที่นี่</a></label>
+                  <label for="cb-rememberme" class="unaccount-txt">ยังไม่มีบัญชี <a href="<?php echo base_url('/register') ?>" class="unaccount-link">คลิกที่นี่</a></label>
                   </div>
                 </div>
                     <center>
@@ -44,3 +45,15 @@
 <?php require('components/footer.php'); ?>
 </body>
 </html>
+<script>
+$(document).ready(function () {
+  <?php if(session()->getFlashdata('swel_title')) { ?>
+    swal({
+      title: "<?= session()->getFlashdata('swel_title') ?>",
+      text: "<?= session()->getFlashdata('swel_text') ?>",
+      icon: "<?= session()->getFlashdata('swel_icon') ?>",
+      button: "<?= session()->getFlashdata('swel_button') ?>",
+    });
+  <?php } ?>
+});
+</script>

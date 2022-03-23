@@ -17,14 +17,14 @@
                     <h1 class="logreg-txt text-center py-5">แก้ไขข้อมูลส่วนตัว</h1>
                     <center>
                       <?php if (isset($Q_Picture) && !empty($Q_Picture)) { ?>
-                    <img src="<?php echo base_url('360/uploads/userProfile/'.$Q_Picture); ?>" width="100px" height="100px" alt="<?php echo $Q_Picture; ?>">
+                    <img src="<?php echo base_url('360/uploads/userProfile/'.$Q_Picture); ?>" width="100px" height="100px" alt="<?php echo $Q_Picture; ?>" class="profile-user-profile">
                     <?php } else { ?>
                     <img src="<?php echo base_url('images/no-picture.png') ?>" width="100px" height="100px" alt="N/A">
                     <?php } ?>
                     </center>
                     <br>
                     <div class="container">
-                        <form action="/editprofile/update" method="post" enctype="multipart/form-data">
+                        <form action="/UserController/edit" method="post" enctype="multipart/form-data">
                         <center><label for="profile_choosefile" class=" btn btn-primary mb-4" id="choose-file-label"><i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;เลือกภาพ</label>
                         <input class="my-3" type="file" name="pic" id="profile_choosefile" accept="image/x-png,image/jpeg,image/jpg" style="display: none;" />
                         </center>
@@ -60,28 +60,6 @@
                             <input type="text" name="email" class="form-control" id="inputforemail" value="<?php if(isset($Q_Email)){echo $Q_Email;} ?>">
                         </div>
                     </div>
-                
-                    <!-- <div class="form-group row mb-4">
-                            <label for="passwordold" class="col-md-3 col-sm-4 col-form-label logreg-label-txt">รหัสผ่านเก่า </label>
-                        <div class="col-md-9 col-sm-8">
-                            <input type="password" name="passwordold" class="form-control" id="inputforpasswordold">
-                        </div>
-                    </div>
-
-                    <div class="form-group row mb-4">
-                            <label for="passwordnew" class="col-md-3 col-sm-4 col-form-label logreg-label-txt">รหัสผ่านใหม่ </label>
-                        <div class="col-md-9 col-sm-8">
-                            <input type="password" name="passwordnew" class="form-control" id="inputforpasswordnew">
-                        </div>
-                    </div>
-
-                    <div class="form-group row mb-4">
-                            <label for="confirmpassword" class="col-md-3 col-sm-4 col-form-label logreg-label-txt">ยืนยันรหัสผ่าน </label>
-                        <div class="col-md-9 col-sm-8">
-                            <input type="password" name="confirmpassword" class="form-control" id="inputforconfirmpassword">
-                        </div>
-                    </div> -->
-
                     <br>
                     <center>
                       <button type="submit" class="btn btn-logreg-confirm mt-3 mb-5">บันทึกการเปลี่ยนแปลง</button>
@@ -102,5 +80,17 @@ $(document).ready(function () {
 		var file = $('#profile_choosefile')[0].files[0].name;
 		$(this).prev('label').text(file);
 	}); 
+});
+</script>
+<script>
+$(document).ready(function () {
+  <?php if(session()->getFlashdata('swel_title')) { ?>
+    swal({
+      title: "<?= session()->getFlashdata('swel_title') ?>",
+      text: "<?= session()->getFlashdata('swel_text') ?>",
+      icon: "<?= session()->getFlashdata('swel_icon') ?>",
+      button: "<?= session()->getFlashdata('swel_button') ?>",
+    });
+  <?php } ?>
 });
 </script>

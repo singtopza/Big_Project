@@ -79,9 +79,9 @@
 			</div>
 			<br>
 			<center>
-				<p><img src="https://media.discordapp.net/attachments/912048438600933467/934718577318187018/unknown.png" style="width:25%;" height="25%" ></img></p>
+				<p><img src="https://media.discordapp.net/attachments/912048438600933467/934718577318187018/unknown.png" style="width:20%;" height="20%" ></img></p>
 
-				<a href="/Home" class="button-submit" style="width:200px;">ยืนยัน</a>
+				<a href="/" class="button-submit" style="width:200px;">ยืนยัน</a>
 			</center>
 		</div>
 	</div>
@@ -92,3 +92,15 @@
 </div>
 </body>
 </html>
+<script>
+$(document).ready(function () {
+  <?php if(session()->getFlashdata('swel_title')) { ?>
+    swal({
+      title: "<?= session()->getFlashdata('swel_title') ?>",
+      text: "<?= session()->getFlashdata('swel_text') ?>",
+      icon: "<?= session()->getFlashdata('swel_icon') ?>",
+      button: "<?= session()->getFlashdata('swel_button') ?>",
+    });
+  <?php } ?>
+});
+</script>

@@ -1,56 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>I-Van</title>
-	<?php require('components/header.php'); ?>
+  <?php require('components/header.php'); ?>
 </head>
+
 <body>
-<?php require('components/navbar.php'); ?>
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8 justify-content-md-center px-4">
-        <div class=" tabcard_des">
+  <?php require('components/navbar.php'); ?>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10 justify-content-md-center px-4">
+        <div class=" tabcard_des" style="padding: 20px 10% 20px 10%;">
           <h1 class="logreg-txt text-center py-5">รายงานปัญหา</h1>
-          <form action="/report/save" method="post">
-            <div class="form-group row mb-4">
-              <label for="inputfirstname" class="col-md-3 col-sm-4 col-form-label logreg-label-txt pe-0">ชื่อเรื่อง <font color="red"> &nbsp;&nbsp;&nbsp;&nbsp;*</font></label>
-              <div class="col-md-9 col-sm-8">
-                <input type="text" name="firstname" class="form-control" id="inputfirstname">
+          <?php if (isset($validation)) : ?>
+            <div class="alert alert-danger"><?= $validation->listErrors(); ?></div>
+          <?php endif; ?>
+          <?php if (session()->getFlashdata('success_report')) { ?>
+            <div class="alert alert-success"><?= session()->getFlashdata('success_report'); ?></div>
+            <center><a href="<?php echo base_url('/report'); ?>" class="btn btn-logreg-confirm mt-5 mb-5">ย้อนกลับ</a></center>
+          <?php } else { ?>
+            <form action="/ComplaintController/add_report" method="post">
+            <div class="row">
+              <div class="col-3 mb-4 pe-4 text-end">
+                <label class="fs18">ชื่อเรื่อง:</label>
               </div>
-            </div>
-            <div class="form-group row mb-4">
-              <label for="inputlastname" class="col-md-3 col-sm-4 col-form-label logreg-label-txt pe-0">ข้อความ <font color="red"> &nbsp;&nbsp;&nbsp;&nbsp;*</font></label>
-              <div class="col-md-9 col-sm-8">
-              <input type="text" name="lastname" class="form-control" id="inputlastname">
-              </div>
-            </div>
-            <div class="form-group row mb-4">
-              <label for="inputpassword" class="col-md-3 col-sm-4 col-form-label logreg-label-txt pe-0">ชื่อ-นามสกุล <font color="red"> &nbsp;&nbsp;&nbsp;&nbsp;*</font></label>
-              <div class="col-md-9 col-sm-8">
-              <input type="password" name="password" class="form-control" id="inputpassword">
-              </div>
-            </div>
-            <div class="form-group row mb-4">
-              <label for="inputemail" class="col-md-3 col-sm-4 col-form-label logreg-label-txt pe-0">อีเมล <font color="red"> &nbsp;&nbsp;&nbsp;&nbsp;*</font></label>
-              <div class="col-md-9 col-sm-8">
-                <input type="email" name="email" class="form-control" id="inputemail">
-              </div>
-            </div>
-            <div class="form-group row mb-4">
-            <label for="inputphone" class="col-md-3 col-sm-4 col-form-label logreg-label-txt pe-0">เบอร์โทรศัพท์ <font color="red"> &nbsp;&nbsp;&nbsp;&nbsp;*</font></label>
-              <div class="col-md-9 col-sm-8">
-                <input type="text" name="phone" class="form-control" id="inputphone">
-              </div>
-            </div>
-            <center>
-              <button type="submit" class="btn btn-logreg-confirm mt-3 mb-5">ส่งข้อความ</button>
-            </center>
-                </form>
+              <div class="col-9 mb-4">
+                <div class="input-group">
+                  <i class="fa fa-edit icon fa-lg icon-heed" style="font-weight: normal;"></i>
+                  <input class="input-fieldd form-control fs18" type="text" name="title" pattern="{5,30}" minlength="5" maxlength="30" required>
                 </div>
+              </div>
+              <div class="col-3 mb-4 pe-4 text-end">
+                <label class="fs18">ประเภทรายงานปัญหา:</label>
+              </div>
+              <div class="col-9 mb-4">
+                <div class="input-group">
+                <!-- <i class="fa fa-edit icon fa-lg icon-heed" style="font-weight: normal;"></i> -->
+                <!-- <select name="type" class="form-control selected-gray fs18"> -->
+                <select name="type" class="form-select input-fieldd fs18" style="max-width: 50%">
+                  <option value="0" class="hide-selected" selected>เลือกประเภทรายงาน</option>
+                  <option value="1">เกี่ยวกับคนขับรถตู้โดยสารสาธารณะ</option>
+                  <option value="2">เกี่ยวกับพนักงานขายตั๋ว</option>
+                  <option value="3">เกี่ยวกับระบบของเว็บไซต์</option>
+                  <option value="4">อื่นๆ</option>
+                </select>
                 </div>
+              </div>
+              <div class="col-3 mb-4 pe-4 text-end">
+                <label class="fs18">ข้อความ:</label>
+              </div>
+              <div class="col-9 mb-4">
+                <div class="input-group">
+                  <i class="fa fa-edit icon fa-lg icon-heed" style="font-weight: normal;"></i>
+                  <textarea class="form-control input-fieldd fs18" rows="8" id="comment" name="message" pattern="{20,1000}" minlength="20" maxlength="1000" required></textarea>
+                </div>
+              </div>
             </div>
+              <center>
+                <button type="submit" class="btn btn-logreg-confirm mt-3 mb-5">ส่งข้อความ</button>
+              </center>
+            </form>
+          <?php } ?>
         </div>
-        <?php require('components/footer.php'); ?>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
+  <?php require('components/footer.php'); ?>
 </body>
+
 </html>

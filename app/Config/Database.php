@@ -35,8 +35,6 @@ class Database extends Config
         'hostname' => 'localhost',
         'username' => 'root',
         'password' => '',
-        // 'username' => 'usr6242590',
-        // 'password' => '2qpgAWg84T7-!_x',
         'database' => 'usr6242590_ivan',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',

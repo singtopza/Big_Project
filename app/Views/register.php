@@ -15,35 +15,35 @@
           <?php if(isset($validation)): ?>
           <div class="alert alert-danger"><?= $validation->listErrors(); ?></div>
           <?php endif; ?>
-          <form action="/register/save" method="post">
+          <form action="/UserController/new" method="post">
             <div class="form-group row mb-4">
               <label for="inputfirstname" class="col-md-3 col-sm-4 col-form-label logreg-label-txt pe-0">ชื่อ <font color="red"> &nbsp;&nbsp;&nbsp;&nbsp;*</font></label>
               <div class="col-md-9 col-sm-8">
-                <input type="text" name="firstname" class="form-control" id="inputfirstname" value="<?= set_value('firstname'); ?>" required>
+                <input type="text" name="firstname" class="form-control" id="inputfirstname" value="<?= set_value('firstname'); ?>">
               </div>
             </div>
             <div class="form-group row mb-4">
               <label for="inputlastname" class="col-md-3 col-sm-4 col-form-label logreg-label-txt pe-0">นามสกุล <font color="red"> &nbsp;&nbsp;&nbsp;&nbsp;*</font></label>
               <div class="col-md-9 col-sm-8">
-              <input type="text" name="lastname" class="form-control" id="inputlastname" value="<?= set_value('lastname'); ?>" required>
+              <input type="text" name="lastname" class="form-control" id="inputlastname" value="<?= set_value('lastname'); ?>">
               </div>
             </div>
             <div class="form-group row mb-4">
               <label for="inputphone" class="col-md-3 col-sm-4 col-form-label logreg-label-txt pe-0">เบอร์โทรศัพท์ <font color="red"> &nbsp;&nbsp;&nbsp;&nbsp;*</font></label>
               <div class="col-md-9 col-sm-8">
-                <input type="number" name="phone" class="form-control" id="inputphone" onkeydown="javascript: return event.keyCode == 69 ? false : true" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" value="<?= set_value('phone'); ?>" maxlength="10" required>
+                <input type="number" name="phone" class="form-control" id="inputphone" onkeydown="javascript: return event.keyCode == 69 ? false : true" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" value="<?= set_value('phone'); ?>" maxlength="10">
               </div>
             </div>
             <div class="form-group row mb-4">
               <label for="inputemail" class="col-md-3 col-sm-4 col-form-label logreg-label-txt pe-0">อีเมล <font color="red"> &nbsp;&nbsp;&nbsp;&nbsp;*</font></label>
               <div class="col-md-9 col-sm-8">
-                <input type="email" name="email" class="form-control" id="inputemail" value="<?= set_value('email'); ?>" required>
+                <input type="email" name="email" class="form-control" id="inputemail" value="<?= set_value('email'); ?>">
               </div>
             </div>
             <div class="form-group row mb-4">
               <label for="inputpassword" class="col-md-3 col-sm-4 col-form-label logreg-label-txt pe-0">รหัสผ่าน <font color="red"> &nbsp;&nbsp;&nbsp;&nbsp;*</font></label>
               <div class="col-md-9 col-sm-8">
-              <input type="password" name="password" class="form-control" id="inputpassword" required>
+              <input type="password" name="password" class="form-control" id="inputpassword">
               </div>
             </div>
             <div class="form-group row mb-2">
@@ -51,7 +51,7 @@
               <div class="col-md-9 col-sm-8">
               <input type="password" name="confpassword" class="form-control mb-3" id="inputconfpassword">
                 <input type="checkbox" name="acceptrule" id="cb-acceptrule" class="cb-acceptrule" required>
-                <label for="cb-acceptrule" class="cb-acceptrule-txt mb-4">ฉันยอมรับ<a href="#" class="acceptrule-link">นโยบายและข้อตกลง</a>ของเว็บไซต์ทั้งหมด <font color="red"> &nbsp;&nbsp;&nbsp;&nbsp;*</font></label><br/>
+                <label for="cb-acceptrule" class="cb-acceptrule-txt mb-4">ฉันยอมรับ<a href="<?php echo base_url('/policy'); ?>" class="acceptrule-link" target="_blank">นโยบายและข้อตกลง</a>ของเว็บไซต์ทั้งหมด <font color="red"> &nbsp;&nbsp;&nbsp;&nbsp;*</font></label><br/>
               </div>
             </div>
             <center>
@@ -72,7 +72,6 @@
                   </div>
                 </div>
               </div>
-
                 </form>
                 </div>
                 </div>
