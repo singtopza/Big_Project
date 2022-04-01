@@ -49,10 +49,10 @@
             <tr>
               <th class="tb-dash-th"></th>
               <th class="tb-dash-th">ชื่อ</th>
-              <th class="tb-dash-th">Status</th>
               <th class="tb-dash-th">Email</th>
               <th class="tb-dash-th">User ID</th>
             </tr>
+            <?php foreach ($userdata as $value) { ?>
             <tr>
               <td class="tb-dash-td">
                 <div class="form-check tb_rs_fix_radio">
@@ -60,25 +60,21 @@
               </td>
               <td class="tb-dash-td">
                 <label class="form-check-label" for="list_a1">
-                  สมเกียรติ ช่อเหมือน
+                  <?= $value['F_Name']." ".$value['L_Name']; ?>
                 </label>
               </td>
               <td class="tb-dash-td">
                 <label class="form-check-label" for="list_a1">
-                  จองสำเร็จ
+                <?= $value['Email']; ?>
                   <label>
               </td>
               <td class="tb-dash-td">
                 <label class="form-check-label" for="list_a1">
-                  Tko@webmail.npru.ac.th
-                  <label>
-              </td>
-              <td class="tb-dash-td">
-                <label class="form-check-label" for="list_a1">
-                  001
-                  <label>
+                <?= $value['User_ID']; ?>
+                <label>
               </td>
             </tr>
+            <?php } ?>
           </table>
         </div>
       </div>

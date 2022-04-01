@@ -37,27 +37,16 @@
                             <input type="text" name="firstname" class="form-control" id="inputforfirstname" value="<?php if(isset($Q_F_Name)){echo $Q_F_Name;} ?>">
                         </div>
                         </div>
-                
                     <div class="form-group row mb-4">
                             <label for="text" class="col-md-3 col-sm-4 col-form-label logreg-label-txt">นามสกุล </label>
                         <div class="col-md-9 col-sm-8">
                             <input type="text" name="lastname" class="form-control" id="inputforlastname" value="<?php if(isset($Q_L_Name)){echo $Q_L_Name;} ?>">
                         </div>
                     </div>
-                    
-
                     <div class="form-group row mb-4">
                             <label for="phone" class="col-md-3 col-sm-4 col-form-label logreg-label-txt">เบอร์โทรศัพท์ </label>
                         <div class="col-md-9 col-sm-8">
                             <input type="number" name="phone" class="form-control" id="inputforphone" value="<?php if(isset($Q_Phone)){echo $Q_Phone;} ?>">
-                        </div>
-                    </div>
-                
-
-                    <div class="form-group row mb-4">
-                            <label for="lastname" class="col-md-3 col-sm-4 col-form-label logreg-label-txt">อีเมล </label>
-                        <div class="col-md-9 col-sm-8">
-                            <input type="text" name="email" class="form-control" id="inputforemail" value="<?php if(isset($Q_Email)){echo $Q_Email;} ?>">
                         </div>
                     </div>
                     <br>

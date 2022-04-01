@@ -126,7 +126,7 @@ class UserController extends Controller
       $rules = [
         'firstname' => 'required|min_length[2]|max_length[25]',
         'lastname' => 'required|min_length[2]|max_length[25]',
-        'email' => 'required|min_length[5]|max_length[50]|valid_email',
+        // 'email' => 'required|min_length[5]|max_length[50]|valid_email',
         'phone' => 'required|min_length[10]|max_length[10]',
         'pic' => [
           #mime_in[pic, image/jpg, image/jpeg, image/png]
@@ -144,7 +144,6 @@ class UserController extends Controller
           $data = [
             'F_Name' => $this->request->getVar('firstname'),
             'L_Name' => $this->request->getVar('lastname'),
-            'Email' => $this->request->getVar('email'),
             'Phone' => $this->request->getVar('phone'),
           ];
         } else {
@@ -154,7 +153,6 @@ class UserController extends Controller
           $data = [
             'F_Name' => $this->request->getVar('firstname'),
             'L_Name' => $this->request->getVar('lastname'),
-            'Email' => $this->request->getVar('email'),
             'Phone' => $this->request->getVar('phone'),
             'Pic' => $newfilename,
           ];
@@ -405,6 +403,26 @@ class UserController extends Controller
     } else {
       $validation = $this->validator->listErrors();
       $session->setFlashdata('validation', $validation);
+      $firstname = $this->request->getVar('firstname');
+      $lastname = $this->request->getVar('lastname');
+      $phone = $this->request->getVar('phone');
+      $email = $this->request->getVar('email');
+      $checkbox = $this->request->getVar('acceptrule');
+      if (isset($firstname)) {
+        $session->setFlashdata('F_Name', $firstname);
+      }
+      if (isset($lastname)) {
+        $session->setFlashdata('L_Name',  $lastname);
+      }
+      if (isset($phone)) {
+        $session->setFlashdata('Phone', $phone);
+      }
+      if (isset($email)) {
+        $session->setFlashdata('Email', $email);
+      }
+      if ($checkbox == "on") {
+        $session->setFlashdata('checkbox', "on");
+      }
       return redirect()->to('/register');
     }
   }

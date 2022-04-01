@@ -20,25 +20,25 @@
             <div class="form-group row mb-4">
               <label for="inputfirstname" class="col-md-3 col-sm-4 col-form-label logreg-label-txt pe-0">ชื่อ <font color="red"> &nbsp;&nbsp;&nbsp;&nbsp;*</font></label>
               <div class="col-md-9 col-sm-8">
-                <input type="text" name="firstname" class="form-control" id="inputfirstname" value="<?= set_value('firstname'); ?>">
+                <input type="text" name="firstname" class="form-control" id="inputfirstname" value="<?php if(session()->getFlashdata('F_Name')) { echo session()->getFlashdata('F_Name'); }?>">
               </div>
             </div>
             <div class="form-group row mb-4">
               <label for="inputlastname" class="col-md-3 col-sm-4 col-form-label logreg-label-txt pe-0">นามสกุล <font color="red"> &nbsp;&nbsp;&nbsp;&nbsp;*</font></label>
               <div class="col-md-9 col-sm-8">
-              <input type="text" name="lastname" class="form-control" id="inputlastname" value="<?= set_value('lastname'); ?>">
+              <input type="text" name="lastname" class="form-control" id="inputlastname" value="<?php if(session()->getFlashdata('L_Name')) { echo session()->getFlashdata('L_Name'); }?>">
               </div>
             </div>
             <div class="form-group row mb-4">
               <label for="inputphone" class="col-md-3 col-sm-4 col-form-label logreg-label-txt pe-0">เบอร์โทรศัพท์ <font color="red"> &nbsp;&nbsp;&nbsp;&nbsp;*</font></label>
               <div class="col-md-9 col-sm-8">
-                <input type="number" name="phone" class="form-control" id="inputphone" onkeydown="javascript: return event.keyCode == 69 ? false : true" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" value="<?= set_value('phone'); ?>" maxlength="10">
+                <input type="number" name="phone" class="form-control" id="inputphone" onkeydown="javascript: return event.keyCode == 69 ? false : true" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" value="<?php if(session()->getFlashdata('Phone')) { echo session()->getFlashdata('Phone'); }?>" maxlength="10">
               </div>
             </div>
             <div class="form-group row mb-4">
               <label for="inputemail" class="col-md-3 col-sm-4 col-form-label logreg-label-txt pe-0">อีเมล <font color="red"> &nbsp;&nbsp;&nbsp;&nbsp;*</font></label>
               <div class="col-md-9 col-sm-8">
-                <input type="email" name="email" class="form-control" id="inputemail" value="<?= set_value('email'); ?>">
+                <input type="email" name="email" class="form-control" id="inputemail" value="<?php if(session()->getFlashdata('Email')) { echo session()->getFlashdata('Email'); }?>">
               </div>
             </div>
             <div class="form-group row mb-4">
@@ -51,7 +51,7 @@
               <label for="inputconfpassword" class="col-md-3 col-sm-4 col-form-label logreg-label-txt pe-0">ยืนยันรหัสผ่าน <font color="red"> &nbsp;&nbsp;&nbsp;&nbsp;*</font></label>
               <div class="col-md-9 col-sm-8">
               <input type="password" name="confpassword" class="form-control mb-3" id="inputconfpassword">
-                <input type="checkbox" name="acceptrule" id="cb-acceptrule" class="cb-acceptrule" required>
+                <input type="checkbox" name="acceptrule" id="cb-acceptrule" class="cb-acceptrule" <?php if(session()->getFlashdata('checkbox')) { echo "checked"; } ?> required>
                 <label for="cb-acceptrule" class="cb-acceptrule-txt mb-4">ฉันยอมรับ<a href="<?php echo base_url('/policy'); ?>" class="acceptrule-link" target="_blank">นโยบายและข้อตกลง</a>ของเว็บไซต์ทั้งหมด <font color="red"> &nbsp;&nbsp;&nbsp;&nbsp;*</font></label><br/>
               </div>
             </div>

@@ -40,15 +40,15 @@
             </select>
           </div>
           <div class="col-lg-2 col-6">
+            <div class="input-group date">
+              <input type="date" id="index-date" class="form-control form-control-index" name="date" disabled/>
+            </div>
+          </div>
+          <div class="col-lg-2 col-6">
             <div class="input-group time">
               <select id="index-time" class="form-select form-control-index" name="time" disabled>
                 <option value="0" class="hide-selected" selected>เวลา</option>
               </select>
-            </div>
-          </div>
-          <div class="col-lg-2 col-6">
-            <div class="input-group date">
-              <input type="date" id="index-date" class="form-control form-control-index" name="date" disabled/>
             </div>
           </div>
           <div class="col-lg-2 col-12 text-center">
@@ -161,4 +161,24 @@
       }
     });
   }
+</script>
+<script>
+  $(function(){
+    var dtToday = new Date();
+    var month = dtToday.getMonth() + 1;
+    var month2 = dtToday.getMonth() + 2;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if(month < 10 || month2 < 10)
+      month = '0' + month.toString();
+      month2 = '0' + month2.toString();
+    if(day < 10)
+      day = '0' + day.toString();
+    var minDate = year + '-' + month + '-' + day;
+    var maxDate = year + '-' + month2 + '-' + day;
+    $('#index-date').attr({
+      'max': maxDate,
+      'min': minDate
+    });
+  });
 </script>

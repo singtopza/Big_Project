@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\PaymentModel;
 use App\Models\UsersModel;
+use App\Models\TicketModel;
 
 class EmployeeController extends BaseController
 {
@@ -28,6 +29,7 @@ class EmployeeController extends BaseController
         } else {
           $data_sending['Q_Picture'] = $data['Pic'];
         }
+        $data_sending['userdata'] = $model->where('Pos_ID', 1)->findAll();
         return view('employee/dashboard', $data_sending);
       } else {
         $session->setFlashdata('swel_title', 'เกิดข้อผิดพลาด!');

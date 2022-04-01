@@ -50,9 +50,9 @@
             </li><hr class="my-1"/>
             <?php if(isset($ses_Pos_ID) && $ses_Pos_ID >= 4) { ?>
               <!-- Admin -->
-              <!-- <li>
-                <a href="<?php echo base_url('/usermanager'); ?>" class="usrlist ps-3"><font color="#44B3F7">จัดการผู้ใช้</font></a>
-              </li> -->
+              <li>
+                <a href="<?php echo base_url('/usermanager'); ?>" class="usrlist ps-3"><font color="#44B3F7">จัดการเว็บไซต์</font></a>
+              </li>
             <?php } if (isset($ses_Pos_ID) && $ses_Pos_ID >= 3) { ?>
               <!-- Officer -->
               <li>
@@ -60,9 +60,9 @@
               </li>
             <?php } if (isset($ses_Pos_ID) && $ses_Pos_ID >= 2) { ?>
               <!-- Driver -->
-              <!-- <li>
+              <li>
                 <a href="<?php echo base_url('/drivermanager'); ?>" class="usrlist ps-3"><font color="#44B3F7">พนักงานขับ</font></a>
-              </li> -->
+              </li>
               <li>
                 <a href="<?php echo base_url('/'); ?>" class="usrlist ps-3"><font color="#44B3F7">กลับสู่เมนูหลัก</font></a>
               </li><hr class="my-1"/>

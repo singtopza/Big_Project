@@ -50,24 +50,22 @@
               </center>
             </div>
             <div class="col-3">
-
-            <div class="input-group">
-              <select id="time" class="form-select mt-3 time form-control-index" name="time" onchange="changetime(this)" disabled>
-                <?php if (session()->getFlashdata('time')): ?>
-                  <option value="<?= session()->getFlashdata('time') ?>"><?= session()->getFlashdata('fixtime') ?></option>
-                <?php else : ?>
-                  <option value="0" class="hide-selected" selected>เวลา</option>
-                <?php endif; ?>
-              </select>
-            </div>
-
-            </div>
-            <div class="col-3">
             <?php if (session()->getFlashdata('date')): ?>
               <input class="mt-3 form-control" id="date" onchange="changedate();" type="date" name="date" value="<?= session()->getFlashdata('date') ?>" disabled>
             <?php else: ?>
               <input class="mt-3 form-control" id="date" onchange="changedate();" type="date" name="date" disabled>
             <?php endif; ?>
+            </div>
+            <div class="col-3">
+              <div class="input-group">
+                <select id="time" class="form-select mt-3 time form-control-index" name="time" onchange="changetime(this)" disabled>
+                  <?php if (session()->getFlashdata('time')): ?>
+                    <option value="<?= session()->getFlashdata('time') ?>"><?= session()->getFlashdata('fixtime') ?></option>
+                  <?php else : ?>
+                    <option value="0" class="hide-selected" selected>เวลา</option>
+                  <?php endif; ?>
+                </select>
+              </div>
             </div>
           </div>
         </div>
@@ -179,8 +177,14 @@
                   <div class="text-center mt-3">
                     <select id="select-chair" class="form-select" name="select-chair">
                       <option value="0" class="hide-selected" selected>จำนวน</option>
-                      <?php for ($x = 1; $x <= 12; $x++) { ?>
-                        <option value="<?php echo $x; ?>"><?php echo $x; ?></option>;
+                      <?php if (session()->getFlashdata('havechair')){
+                        for ($x = 1; $x <= session()->getFlashdata('havechair'); $x++) { ?>
+                          <option value="<?php echo $x; ?>"><?php echo $x; ?></option>;
+                        <?php } ?>
+                      <?php } else {
+                        for ($x = 1; $x <= 12; $x++) { ?>
+                          <option value="<?php echo $x; ?>"><?php echo $x; ?></option>;
+                        <?php } ?>
                       <?php } ?>
                     </select>
                   </div>
@@ -407,6 +411,26 @@
       error() {
         $('#time').html('An Error');
       }
+    });
+  });
+</script>
+<script>
+  $(function(){
+    var dtToday = new Date();
+    var month = dtToday.getMonth() + 1;
+    var month2 = dtToday.getMonth() + 2;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if(month < 10 || month2 < 10)
+      month = '0' + month.toString();
+      month2 = '0' + month2.toString();
+    if(day < 10)
+      day = '0' + day.toString();
+    var minDate = year + '-' + month + '-' + day;
+    var maxDate = year + '-' + month2 + '-' + day;
+    $('#date').attr({
+      'max': maxDate,
+      'min': minDate
     });
   });
 </script>
