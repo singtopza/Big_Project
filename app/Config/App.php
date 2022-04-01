@@ -23,10 +23,8 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'http://localhost:5000/';
-    // public $baseURL = 'http://154.202.2.252:5000/';
-    // public $baseURL = 'http://www.kunkaibookshop.lnw.mn/';
-    // public $baseURL = 'http://localhost/Big_Project_Code4/public_html/';
+    public $baseURL = 'http://localhost/Big_Project_Code4/';
+    // public $baseURL = 'http://154.202.2.252/';
     
 
     /**
@@ -59,7 +57,8 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $uriProtocol = 'REQUEST_URI';
+    // public $uriProtocol = 'REQUEST_URI';
+    public $uriProtocol = 'PATH_INFO';
 
     /**
      * --------------------------------------------------------------------------

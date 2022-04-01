@@ -22,11 +22,11 @@
             </div>
             <div class="input-report">
               <label class="fs20">หมายเลขรถ&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label>
-              <input class="input-fieldd" type="text" placeholder="ชื่อเรื่อง" name="title"></textarea>
+              <input class="input-fieldd" type="text" placeholder="หมายเลขรถ" name="title"></textarea>
             </div>
             <div class="input-report">
               <label class="fs20">หมายเลขทะเบียนรถ&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </label>
-              <input class="input-fieldd" type="text" placeholder="หมายเลขรถ" name="name-surname"></textarea>
+              <input class="input-fieldd" type="text" placeholder="หมายเลขทะเบียนรถ" name="name-surname"></textarea>
             </div>
             <div class="input-report">
               <label class="fs20">ชื่อผู้ขับ&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label>
@@ -34,8 +34,8 @@
             </div>
 
             <div class="input-report">
-              <label class="fs20">จำนวนที่รองขับ&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label>
-              <input class="input-fieldd" type="text" placeholder="จำนวนที่รองขับ" name="tel"></textarea>
+              <label class="fs20">จำนวนที่รองรับ&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label>
+              <input class="input-fieldd" type="text" placeholder="จำนวนที่รองรับ" name="tel"></textarea>
             </div>
             <center>
               <button class="btn btn-success">เพิ่มข้อมูล</button>&nbsp; &nbsp; &nbsp;

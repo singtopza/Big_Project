@@ -24,7 +24,7 @@
                     </center>
                     <br>
                     <div class="container">
-                        <form action="/UserController/edit" method="post" enctype="multipart/form-data">
+                        <form action="<?php echo base_url('/UserController/edit'); ?>" method="post" enctype="multipart/form-data">
                         <center><label for="profile_choosefile" class=" btn btn-primary mb-4" id="choose-file-label"><i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;เลือกภาพ</label>
                         <input class="my-3" type="file" name="pic" id="profile_choosefile" accept="image/x-png,image/jpeg,image/jpg" style="display: none;" />
                         </center>

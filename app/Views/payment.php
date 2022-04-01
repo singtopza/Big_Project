@@ -21,7 +21,7 @@
     <div class="col-md-10 justify-content-md-center px-4">
       <div class="payment-tabcard-des">
         <h1 class="logreg-txt text-center py-3">ชำระเงิน</h1>
-        <form action="/PaymentController/add_payment" method="POST" enctype="multipart/form-data">
+        <form action="<?php echo base_url('/PaymentController/add_payment'); ?>" method="POST" enctype="multipart/form-data">
         <table class="pm-table" width="100%">
           <thead>
             <tr>

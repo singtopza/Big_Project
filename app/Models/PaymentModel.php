@@ -36,4 +36,19 @@ class PaymentModel extends Model {
       ->getResultArray();
     return $data;
   }
+
+  public function viewPaymentAll()
+  {
+    $where_sql = "payment.confirm = 'waiting'";
+    $data = $this->db
+      ->table('payment')
+      ->join('users', 'users.User_ID = payment.User_ID')
+      ->join('reservation', 'reservation.Reserve_ID = payment.Reserve_ID')
+      ->join('dock_car', 'dock_car.Dock_car_id = reservation.Dock_car_id')
+      ->where($where_sql)
+      ->orderBy('Pay_DateTime', 'ASC')
+      ->get()
+      ->getResultArray();
+    return $data;
+  }
 }

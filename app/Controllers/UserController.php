@@ -239,8 +239,6 @@ class UserController extends Controller
       ];
       if ($this->validate($rules)) {
         $oldpass = $this->request->getVar('oldpassword');
-        $model = new UsersModel();
-        $data = $model->where('User_ID', $ses_userid)->first();
         $getpass = $data['Pass'];
         $verify_password = password_verify($oldpass, $getpass);
         if ($verify_password) {
@@ -356,23 +354,30 @@ class UserController extends Controller
       'email' => [
         'rules' => 'required|min_length[5]|max_length[50]|valid_email|is_unique[users.email]',
         'errors' => [
-          'required' => 'ข้อผิดพลาด: โปรดระบุอีเมล!',
-          'valid_email' => 'ข้อผิดพลาด: รูปแบบของอีเมลไม่ถูกต้อง!',
-          'is_unique' => 'ข้อผิดพลาด: อีเมลนี้ถูกใช้แล้ว!',
+          'required' => 'โปรดระบุอีเมล!',
+          'valid_email' => 'รูปแบบของอีเมลไม่ถูกต้อง!',
+          'is_unique' => 'อีเมลนี้ถูกใช้แล้ว!',
         ],
       ],
       'phone' => [
         'rules' => 'required|min_length[10]',
         'errors' => [
-          'required' => 'ข้อผิดพลาด: โปรดระบุรหัสผ่าน!',
-          'min_length' => 'ข้อผิดพลาด: เบอร์โทรติดต่อต้องมีจำนวน 10 ตัวอักษร!',
+          'required' => 'โปรดระบุหมายเลขโทรศัพท์!',
+          'min_length' => 'เบอร์โทรติดต่อต้องมีจำนวน 10 ตัวอักษร!',
         ],
       ],
-      'password' => 'required|min_length[3]|max_length[200]',
+      'password' => [
+        'rules' => 'required|min_length[3]|max_length[30]',
+        'errors' => [
+          'required' => 'โปรดระบุรหัสผ่าน!',
+          'min_length' => 'รหัสผ่านต้องมีอย่างน้อย 3 ตัวอักษร!',
+          'max_length' => 'รหัสผ่านต้องไม่เกิน 30 ตัวอักษร!',
+        ],
+      ],
       'confpassword' => [
         'rules' => 'matches[password]',
         'errors' => [
-          'matches' => 'ข้อผิดพลาด: รหัสผ่านไม่ตรงกัน!',
+          'matches' => 'รหัสผ่านไม่ตรงกัน!',
         ],
       ],
     ];
@@ -398,8 +403,9 @@ class UserController extends Controller
         return redirect()->to('/login');
       }
     } else {
-      $data['validation'] = $this->validator;
-      echo view('register', $data);
+      $validation = $this->validator->listErrors();
+      $session->setFlashdata('validation', $validation);
+      return redirect()->to('/register');
     }
   }
 
@@ -430,36 +436,6 @@ class UserController extends Controller
     $data_sending['ticketprice_ntok'] = $model_ticketprice->CountTicketNtoK();
     $data_sending['ticketprice_kton'] = $model_ticketprice->CountTicketKtoN();
     return view('table_reservation', $data_sending);
-  }
-
-  public function booking_details()
-  {
-    $session = session();
-    $ses_userid = $session->get('ses_id');
-    $data_sending = [];
-    if (isset($ses_userid)) {
-      $model = new UsersModel();
-      $data = $model->where('User_ID', $ses_userid)->first();
-      $data_sending['Q_ID'] = $data['User_ID'];
-      $data_sending['Q_F_Name'] = $data['F_Name'];
-      $data_sending['Q_L_Name'] = $data['L_Name'];
-      $data_sending['Q_Email'] = $data['Email'];
-      $data_sending['Q_Phone'] = $data['Phone'];
-      $data_sending['Q_Pos_ID'] = $data['Pos_ID'];
-      if (!isset($data['Pic'])) {
-        $data_sending['Q_Picture'] = "";
-      } else {
-        $data_sending['Q_Picture'] = $data['Pic'];
-      }
-      return view('booking_details', $data_sending);
-    } else {
-      $session = session();
-      $session->setFlashdata('swel_title', 'เกิดข้อผิดพลาด');
-      $session->setFlashdata('swel_text', 'โปรดเข้าสู่ระบบก่อนทำรายการ');
-      $session->setFlashdata('swel_icon', 'error');
-      $session->setFlashdata('swel_button', 'ดำเนินการต่อ');
-      return redirect()->to('/login');
-    }
   }
 
   public function logout()

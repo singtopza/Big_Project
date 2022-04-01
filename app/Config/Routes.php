@@ -41,14 +41,14 @@ $routes->get('/table', 'UserController::table_reservation');
 $routes->get('/profile', 'UserController::profile');
 $routes->get('/edit-form', 'UserController::editprofile');
 $routes->get('/change-password', 'UserController::change_pass');
-$routes->get('/booking-details', 'UserController::booking_details');
 $routes->get('/policy', 'UserController::policy');
 
 // Employee
-$routes->get('/dashboard', 'EmployeeController::index');
+$routes->get('/dashboard', 'EmployeeController::dashboard');
 $routes->get('/EmployeeController', 'EmployeeController::kickEmployeeController');
 $routes->get('/manage-van', 'EmployeeController::manage_van');
 $routes->get('/manage-traffic', 'EmployeeController::manage_traffic');
+$routes->get('/check-payment', 'EmployeeController::check_payment');
 
 // Reservation
 $routes->get('/reservation', 'ReservationController::reservation');
@@ -58,6 +58,7 @@ $routes->get('/checking', 'ReservationController::check_reservation');
 
 // Payment
 $routes->get('/payment', 'PaymentController::payment');
+$routes->get('/booking-details', 'PaymentController::booking_details');
 
 // Van
 $routes->get('/VanController', 'UserController::kickVanController');

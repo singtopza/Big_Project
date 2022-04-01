@@ -134,7 +134,7 @@
           </center>
         </div>
         <?php } else { ?>
-          <div class="alert alert-danger text-center" role="alert">
+          <div class="alert alert-danger text-center mt-5" role="alert">
             โอ๊ะ!! เราไม่พบข้อมูลการจองของคุณ
           </div>
         <?php } ?>
@@ -143,9 +143,56 @@
   </div>
   <center>
     <?php if (isset($Reserve_ID)) { ?>
-    <a href="<?php echo base_url('/booking-details'); ?>" class="button-submit" style="width:200px;">รายละเอียดตั๋ว</a>
+    <a href="<?php echo base_url('/booking-details'); ?>" class="button-submit" style="width:200px;">รับตั๋ว</a>
     <?php } ?>
   </center>
   <?php require('components/footer.php'); ?>
 </body>
 </html>
+<script>
+$(document).ready(function () {
+  <?php if(session()->getFlashdata('swel_title')) { ?>
+    swal({
+      title: "<?= session()->getFlashdata('swel_title') ?>",
+      text: "<?= session()->getFlashdata('swel_text') ?>",
+      icon: "<?= session()->getFlashdata('swel_icon') ?>",
+      button: "<?= session()->getFlashdata('swel_button') ?>",
+    });
+  <?php } ?>
+  <?php
+  if(isset($Confirm)) {
+    if($Confirm == "cancel") {
+    ?>
+      swal({
+        title: "การจองถูกยกเลิก!",
+        text: "หมายเหตุ: <?php echo $Note; ?>",
+        icon: "error",
+        button: "ตกลง",
+      });
+    <?php
+    } else if ($Confirm == "success") {
+    ?>
+      swal({
+        title: "ชำระเงินสำเร็จ!",
+        text: "การจองของคุณได้รับการยืนยันแล้ว คุณสามารถรับตั๋วได้ที่ด่านล่าง",
+        icon: "success",
+        button: "รับตั๋ว",
+      });
+    <?php
+    } else if ($Confirm == "waiting") {
+    ?>
+  <?php
+    } else {
+    ?>
+    swal({
+      title: "เกิดข้อผิดพลาดกับระบบ!",
+      text: "โปรดติดต่อผู้ดูแลระบบ เพื่อตรวจสอบข้อผิดพลาด!",
+      icon: "error",
+      button: "ตกลง",
+    });
+    <?php
+    }
+  }
+  ?>
+});
+</script>

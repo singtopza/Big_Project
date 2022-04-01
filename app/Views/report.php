@@ -21,7 +21,7 @@
             <div class="alert alert-success"><?= session()->getFlashdata('success_report'); ?></div>
             <center><a href="<?php echo base_url('/report'); ?>" class="btn btn-logreg-confirm mt-5 mb-5">ย้อนกลับ</a></center>
           <?php } else { ?>
-            <form action="/ComplaintController/add_report" method="post">
+            <form action="<?php echo base_url('/ComplaintController/add_report'); ?>" method="post">
             <div class="row">
               <div class="col-3 mb-4 pe-4 text-end">
                 <label class="fs18">ชื่อเรื่อง:</label>

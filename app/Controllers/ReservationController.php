@@ -259,11 +259,13 @@ class ReservationController extends BaseController
           $data_sending['Total_Price'] = $value['Total_Price'];
           $data_payment = $model_payment->getStatus($userId, $Reserve_ID);
           foreach ($data_payment as $value) {
-            if ($value['Confirm'] == "false") {
+            $data_sending['Confirm'] = $value['Confirm'];
+            $data_sending['Note'] = $value['Note'];
+            if ($value['Confirm'] == "cancel") {
               $data_sending['Status_Format'] = "<font color='red'>การจองถูกยกเลิก!</font>";
             } else if ($value['Confirm'] == "waiting") {
-              $data_sending['Status_Format'] = "<font color='black'>กำลังตรวจสอบการชำระเงิน</font>";
-            } else if ($value['Confirm'] == "true") {
+              $data_sending['Status_Format'] = "<font color='#205977'>กำลังตรวจสอบการชำระเงิน</font>";
+            } else if ($value['Confirm'] == "success") {
               $data_sending['Status_Format'] = "<font color='green'>ชำระเงินสำเร็จแล้ว</font>";
             } else {
               $data_sending['Status_Format'] = "<font color='red'>มีบางอย่างผิดพลาด!</font>";

@@ -81,7 +81,7 @@
 			<center>
 				<p><img src="https://media.discordapp.net/attachments/912048438600933467/934718577318187018/unknown.png" style="width:20%;" height="20%" ></img></p>
 
-				<a href="/" class="button-submit" style="width:200px;">ยืนยัน</a>
+				<a href="<?php echo base_url('/'); ?>" class="button-submit" style="width:200px;">กลับสู่หน้าหลัก</a>
 			</center>
 		</div>
 	</div>

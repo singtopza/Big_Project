@@ -48,28 +48,28 @@
             <li>
               <a href="<?php echo base_url('/profile'); ?>" class="usrlist ps-3"><font color="#000000">โปรไฟล์</font></a>
             </li><hr class="my-1"/>
-            <li>
-              <a href="<?php echo base_url('/history'); ?>" class="usrlist ps-3"><font color="#000000">การจองของฉัน</font></a>
-            </li>
             <?php if(isset($ses_Pos_ID) && $ses_Pos_ID >= 4) { ?>
               <!-- Admin -->
-              <li>
-                <a href="<?php echo base_url('/usermanager'); ?>" class="usrlist ps-3"><font color="#000000">จัดการผู้ใช้</font></a>
-              </li>
+              <!-- <li>
+                <a href="<?php echo base_url('/usermanager'); ?>" class="usrlist ps-3"><font color="#44B3F7">จัดการผู้ใช้</font></a>
+              </li> -->
             <?php } if (isset($ses_Pos_ID) && $ses_Pos_ID >= 3) { ?>
               <!-- Officer -->
               <li>
-                <a href="<?php echo base_url('/EmployeeController/manager'); ?>" class="usrlist ps-3"><font color="#000000">จัดการการจอง</font></a>
+                <a href="<?php echo base_url('/EmployeeController/manager'); ?>" class="usrlist ps-3"><font color="#44B3F7">การจัดการ</font></a>
               </li>
-            <?php } if (isset($ses_Pos_ID) && $ses_Pos_ID == 2 || $ses_Pos_ID == 4) { ?>
+            <?php } if (isset($ses_Pos_ID) && $ses_Pos_ID >= 2) { ?>
               <!-- Driver -->
+              <!-- <li>
+                <a href="<?php echo base_url('/drivermanager'); ?>" class="usrlist ps-3"><font color="#44B3F7">พนักงานขับ</font></a>
+              </li> -->
               <li>
-                <a href="<?php echo base_url('/drivermanager'); ?>" class="usrlist ps-3"><font color="#000000">พนักงานขับ</font></a>
-              </li>
-              <li>
-                <a href="<?php echo base_url('/'); ?>" class="usrlist ps-3"><font color="#000000">กลับสู่เมนูหลัก</font></a>
-              </li>
+                <a href="<?php echo base_url('/'); ?>" class="usrlist ps-3"><font color="#44B3F7">กลับสู่เมนูหลัก</font></a>
+              </li><hr class="my-1"/>
             <?php } ?>
+            <li>
+              <a href="<?php echo base_url('/history'); ?>" class="usrlist ps-3"><font color="#000000">การจองของฉัน</font></a>
+            </li>
             <li>
               <a href="<?php echo base_url('/report'); ?>" class="usrlist ps-3"><font color="#000000">ร้องเรียน</font></a>
             </li><hr class="my-1"/>

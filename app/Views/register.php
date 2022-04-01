@@ -12,10 +12,11 @@
     <div class="col-md-8 justify-content-md-center px-4">
         <div class=" tabcard_des">
           <h1 class="logreg-txt text-center py-5">สมัครสมาชิก</h1>
-          <?php if(isset($validation)): ?>
-          <div class="alert alert-danger"><?= $validation->listErrors(); ?></div>
-          <?php endif; ?>
-          <form action="/UserController/new" method="post">
+          <?php $validation = session()->getFlashdata('validation');
+          if(isset($validation)) { ?>
+          <div class="alert alert-danger"><?= session()->getFlashdata('validation') ?></div>
+          <?php } ?>
+          <form action="<?php echo base_url('/UserController/new'); ?>" method="post">
             <div class="form-group row mb-4">
               <label for="inputfirstname" class="col-md-3 col-sm-4 col-form-label logreg-label-txt pe-0">ชื่อ <font color="red"> &nbsp;&nbsp;&nbsp;&nbsp;*</font></label>
               <div class="col-md-9 col-sm-8">
@@ -80,3 +81,15 @@
         <?php require('components/footer.php'); ?>
 </body>
 </html>
+<script>
+$(document).ready(function () {
+  <?php if(session()->getFlashdata('swel_title')) { ?>
+    swal({
+      title: "<?= session()->getFlashdata('swel_title') ?>",
+      text: "<?= session()->getFlashdata('swel_text') ?>",
+      icon: "<?= session()->getFlashdata('swel_icon') ?>",
+      button: "<?= session()->getFlashdata('swel_button') ?>",
+    });
+  <?php } ?>
+});
+</script>

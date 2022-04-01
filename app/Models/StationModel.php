@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class StationModel extends Model {
   protected $table = 'station';
   protected $primaryKey = 'Station_ID';
-  protected $allowedFields = ['Station_ID', 'Station_Name', 'Landmark', 'Province', 'District', 'SubDistrict', 'Coordinates'];
+  protected $allowedFields = ['Station_ID', 'Station_Name', 'Landmark', 'Province', 'District', 'SubDistrict', 'Lat', 'Lng'];
 
   public function getStation()
   {

@@ -16,7 +16,7 @@
                     <?php if(session()->getFlashdata('msg')): ?>
                       <div class="alert alert-danger"><?= session()->getFlashdata('msg'); ?></div>
                     <?php endif; ?>
-                    <form action="/UserController/auth" method="post">
+                    <form action="<?php echo base_url('/UserController/auth'); ?>" method="post">
                     <div class="form-group row mb-4">
                     <label for="staticEmail" class="col-md-3 col-sm-4 col-form-label logreg-label-txt">อีเมล</label>
                     <div class="col-md-9 col-sm-8">

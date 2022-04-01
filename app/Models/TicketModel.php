@@ -12,7 +12,7 @@ class TicketModel extends Model
 
   public function get_history($user_ID)
   {
-    $where_sql = "reservation.User_ID = {$user_ID} and payment.Confirm = 'true'";
+    $where_sql = "reservation.User_ID = {$user_ID} and payment.Confirm = 'success'";
     return $this->db
       ->table('ticket')
       ->join('payment', 'ticket.Pay_ID = payment.Pay_ID')
